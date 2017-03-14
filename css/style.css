@@ -189,7 +189,7 @@ a {
     text-decoration: none;
     opacity: .8; }
 	
-a:hover {
+a:hover{
    text-decoration: none; }
 
 p {
@@ -217,10 +217,11 @@ p {
     border: 1px solid transparent;
 	margin:15px auto; }
 
-.site-button:hover {
+.site-button:hover, .site-button:focus, .site-button:visited, .site-button:active {
 	color: #fff;
 	background-color: #c9302c;
-    border-color: #ac2925; }
+    border-color: #ac2925;
+    text-decoration: none; 	}
 
 @media screen and (max-width: 992px) {
     .site-button {
