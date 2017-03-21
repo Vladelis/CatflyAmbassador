@@ -163,8 +163,12 @@
 			$('.alert').hide();
 			var $alert = $('.alert-danger');
 			$alert.html('');
-			for (var error in data.responseJSON) {
-				$alert.append(data.responseJSON[error] + "<br />");
+			if (!data.responseJSON) {
+				$alert.append("An error occured with sending your request");
+			} else {
+				for (var error in data.responseJSON) {
+					$alert.append(data.responseJSON[error] + "<br />");
+				}
 			}
 			$alert.show();
 		});
