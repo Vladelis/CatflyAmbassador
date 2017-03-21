@@ -157,6 +157,7 @@
 		posting.done(function( data ) {
 			$('.alert').hide();
 			$('.alert-success').show();
+			$("#contactForm")[0].reset();
 		});
 		
 		posting.fail(function( data ) {
