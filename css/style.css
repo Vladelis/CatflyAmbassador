@@ -345,6 +345,10 @@ p {
     border-color: #de3152;
 }
 
+.cancel-button:hover, .submit-button:hover {
+	opacity:.8;
+}
+
 .form-control {
     appearance: none;
     height: 33px;

@@ -156,7 +156,7 @@
 
 		posting.done(function( data ) {
 			$('.alert').hide();
-			$('.alert-success').show();
+			$('.alert-success').slideDown( "slow" );
 			$("#contactForm")[0].reset();
 		});
 		
@@ -171,7 +171,7 @@
 					$alert.append(data.responseJSON[error] + "<br />");
 				}
 			}
-			$alert.show();
+			$alert.slideDown( "slow" );
 		});
 	});
 </script>
