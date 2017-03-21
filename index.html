@@ -147,7 +147,6 @@
 <script>
 	$("#contactForm").submit(function( event ) {
 		event.preventDefault();
-		toggleLoading();
 		var $form = $( this ),
 			formName = $form.find( "input[name='name']" ).val(),
 			formEmail = $form.find( "input[name='email']" ).val(),
@@ -159,7 +158,6 @@
 		posting.done(function( data ) {
 			$('.alert').hide();
 			$('.alert-success').show();
-			toggleLoading();
 		});
 		
 		posting.fail(function( data ) {
@@ -170,14 +168,7 @@
 				$alert.append(data.responseJSON[error] + "<br />");
 			}
 			$alert.show();
-			toggleLoading();
 		});
 	});
-	var image = new Image();
-	image.src = "./images/loading.gif";
-	function toggleLoading() {
-		$('.loading-image').attr('src',image.src).toggle();
-		$('.modal-content').toggle();
-	};
 </script>
 </html>
