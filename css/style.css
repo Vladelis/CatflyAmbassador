@@ -373,3 +373,30 @@ textarea {
     position: relative;
     text-shadow: 2px 2px 2px #bf7f01;
 }
+
+.alert {
+    line-height: 23px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 0;
+    border-radius: 4px;
+    text-align: center;
+    color: #3f3d3d;
+    font-size: 17px;
+	display:none;
+}
+
+.alert.alert-success {
+    background-color: #d4ebc9;
+	font-weight:700;
+}
+
+.alert.alert-danger {
+    background-color: #ebccc9;
+	font-weight:700;
+}
+.loading-image {
+	width:100%;
+	display:none;
+	border-radius:5px;
+}

@@ -82,20 +82,20 @@
 							</p>
 						</div>
 					</div>
-					<button type="button" class="site-button" data-toggle="modal" data-target="#contactForm">
+					<button type="button" class="site-button" data-toggle="modal" data-target="#contactModal">
 						Yes, I’d love to earn money!
 					</button>
-	
 				</div>
 			</div>
 		</div>
 		<!-- / container -->
 		<!-- Modal -->
-		<div class="modal fade" id="contactForm" role="dialog">
+		<div class="modal fade" id="contactModal" role="dialog">
 			<div class="modal-dialog">
 			  <!-- Modal content-->
+			  <img class='loading-image' src="" alt="earn money">
 			  <div class="modal-content">
-				  <form>
+			   <form id='contactForm' action="http://catfly.com/ambassador-contact">
 					<div class="modal-header">
 					  <button type="button" class="close" data-dismiss="modal">&times;</button>
 					  <h3 class="modal-title">Ambassador Form</h3>
@@ -110,16 +110,21 @@
 							<input required class="form-control" placeholder="Your Email" type="email" name="email"/>
 						</div>
 						<div class="form-group">
-							<label for="email" align="left">Your audience's social network(s)</label>
-							<textarea required class="form-control" placeholder="Facebook, Twitter..." type="email" name="email" rows="4"></textarea>
+							<label for="pages" align="left">Your Facebook pages to post our content in</label>
+							<textarea required class="form-control" type="text" name="pages" rows="4"></textarea>
+						</div>
+						<div class="alert alert-success">
+							Your message has been successfully delivered!
+						</div>
+						<div class="alert alert-danger">
 						</div>
 					</div>
 					<div class="modal-footer">
 					  <button type="button" class="cancel-button" data-dismiss="modal">Close</button>
-					  <button type="button" class="submit-button">Submit</button>
+					  <button type="submit" class="submit-button">Submit</button>
 					</div>
 				  </form>
-			  </div>
+			   </div>
 			</div>
 		</div>
 	</div>
@@ -139,4 +144,40 @@
 	</footer>
 	<!-- / footer -->
 </body>
+<script>
+	$("#contactForm").submit(function( event ) {
+		event.preventDefault();
+		toggleLoading();
+		var $form = $( this ),
+			formName = $form.find( "input[name='name']" ).val(),
+			formEmail = $form.find( "input[name='email']" ).val(),
+			formPages = $form.find( "textarea[name='pages']" ).val(),
+			url = $form.attr( "action" );
+		 
+		var posting = $.post( url, { name: formName, email : formEmail, pages : formPages});
+
+		posting.done(function( data ) {
+			$('.alert').hide();
+			$('.alert-success').show();
+			toggleLoading();
+		});
+		
+		posting.fail(function( data ) {
+			$('.alert').hide();
+			var $alert = $('.alert-danger');
+			$alert.html('');
+			for (var error in data.responseJSON) {
+				$alert.append(data.responseJSON[error] + "<br />");
+			}
+			$alert.show();
+			toggleLoading();
+		});
+	});
+	var image = new Image();
+	image.src = "./images/loading.gif";
+	function toggleLoading() {
+		$('.loading-image').attr('src',image.src).toggle();
+		$('.modal-content').toggle();
+	};
+</script>
 </html>
