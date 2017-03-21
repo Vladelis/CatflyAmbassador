@@ -88,7 +88,7 @@ body {
   border-radius: 4px;
   box-shadow: 0 2px 2px rgba(129, 112, 91, 0.05); }
   .text-box .entry {
-    padding: 36px 100px 73px 50px; }
+    padding: 36px 50px 60px 50px; }
   @media screen and (max-width: 1023px) {
     .text-box .entry {
       padding: 20px;} }
